@@ -47,6 +47,7 @@ def shunting_yard(token_list):
 
 
 def pretty_rpn(rpn_tokens):
+    print(rpn_tokens)
     return ' '.join((x.string for x in rpn_tokens))
 
 
@@ -99,6 +100,8 @@ if __name__ == "__main__":
     while True:
         expression = input('> ')
         tokens = tokenize.tokenize(io.BytesIO(expression.encode('utf-8')).readline)
+        tokens = [x for x in tokens]
+        print(tokens)
         rpn = shunting_yard(tokens)
 
         names = {x.string for x in rpn if x.type == token.NAME}
